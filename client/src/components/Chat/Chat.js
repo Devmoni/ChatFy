@@ -12,7 +12,7 @@ import './Chat.css';
 
 let socket;
 
-const ENDPOINT = 'http://localhost:5000/';
+const ENDPOINT = process.env.REACT_APP_ENDPOINT;
 
 const Chat = () => {
   const [name, setName] = useState('');
@@ -39,7 +39,7 @@ const Chat = () => {
     return () => {
       socket.disconnect();
     };
-  }, [ENDPOINT, location.search]);
+  }, [location.search]);
 
   useEffect(() => {
     socket.on('message', (message) => {
